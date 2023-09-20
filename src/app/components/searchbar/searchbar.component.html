@@ -1,0 +1,18 @@
+<div class="searchbar">
+    <form (ngSubmit)="searchPokemon(pokemonName)" #searchForm="ngForm">
+        <input
+            type="text"
+            name="pokemonName"
+            placeholder="Search your Pokemon"
+            [(ngModel)]="pokemonName"
+            required
+            #pokemonNameInput="ngModel"
+        />
+        <button type="submit">
+            Search
+        </button>
+    </form>
+</div>
+<div>
+    {{ pokemonInfo | json }}
+</div>
