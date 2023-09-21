@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from  '@angular/common/http';
 
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { ContainerComponent } from './components/container/container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchbarComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-
+import Pokemon from '../../models/Pokemon';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
@@ -18,32 +19,24 @@ import { PokemonService } from '../../services/pokemon.service';
  * 
  * @returns { void } 
  */
-export class SearchbarComponent implements OnInit {
+export class SearchbarComponent {
   pokemonName!: string;
-  pokemonInfo!: any;
-
+  pokemonInfo : Observable<Pokemon> = new Observable<Pokemon>();
+  
   // Inject the pokemon service into the constructor
   constructor(private pokemonService: PokemonService) { }
 
-  ngOnInit(): void {
-  }
-
+  /**
+   * @method searchPokemon
+   * @description This method is responsible for searching for the pokemon.
+   * If the pokemonName is not empty, it will return the pokemon with the given name.
+   * 
+   * @param { string } pokemonName - The name of the pokemon to search for
+   * 
+   * @returns { void }
+   */
   searchPokemon(pokemonName: string) {
-
-    // If there is no pokemon name, get all pokemons
-    if (!pokemonName) {
-      this.pokemonInfo = this.pokemonService.getPokemons().subscribe(
-        (data: any) => {
-          this.pokemonInfo = data;
-        }
-      )
-    }
-
-    // Get the pokemon by name
-    this.pokemonInfo = this.pokemonService.getPokemon(pokemonName).subscribe(
-      (data: any) => {
-        this.pokemonInfo = data;
-      }
-    )
+    if (pokemonName === '') return;
+    this.pokemonInfo = this.pokemonService.getPokemon(pokemonName);
   }
 }
