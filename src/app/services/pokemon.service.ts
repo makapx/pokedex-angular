@@ -23,21 +23,26 @@ export class PokemonService {
   getPokemon(pokemonName: string) : Observable<Pokemon> {
     const response = this.http.get<any>(`${APIURL}${pokemonName}`);
     return response.pipe( map((data: any) => {
+      const { id, name, height, weight } = data;
+
+      const types = data.types.map((t : any)=> t.type.name);
+      const abilities = data.abilities.map((a : any)=> a.ability.name);
+
+      const stats = data.stats.map((stat: any) => ({
+        name: stat.stat.name,
+        value: stat.base_stat
+      }));
+
       return {
-        id: data.id,
-        name: data.name,
+        id,
+        name,
         sprite: data.sprites.front_default,
         animateSprite: data.sprites.versions['generation-v']['black-white'].animated.front_default,
-        types: data.types.map((type: any) => type.type.name),
-        height: data.height,
-        weight: data.weight,
-        abilities: data.abilities.map((ability: any) => ability.ability.name),
-        stats: data.stats.map((stat: any) => {
-          return {
-            name: stat.stat.name,
-            value: stat.base_stat
-          }
-        }),
+        types,
+        height,
+        weight,
+        abilities,
+        stats,
         evolutions: []
       }
     }
@@ -52,20 +57,13 @@ export class PokemonService {
    */
   getPokemons() : Observable<Pokemon[]> {
     //@TODO: Provide offset for pagination
-    const response = this.http.get<any>(`${APIURL}?limit=${DEFAULTLIMIT}`);
-    return response.pipe(
-      map((data: any) => {
-        return data.results.map((pokemon: any) => {
-          return pokemon.name;
-        });
-      }),
-      switchMap((pokemons: string[]) => {
-        const completePokemonData : Observable<Pokemon>[] = []; 
-        pokemons.forEach((pokemon: string) => {
-          completePokemonData.push(this.getPokemon(pokemon));
-        });
-        return combineLatest(completePokemonData);
-      }),
+    return this.http.get<any>(`${APIURL}?limit=${DEFAULTLIMIT}`).pipe(
+      map((data: any) => data.results.map((p: any) => p.name)),
+      switchMap((pokemonsNames: string[]) => 
+        combineLatest(pokemonsNames.map(
+          pName => this.getPokemon(pName)
+        ))
+      )
     ) as Observable<Pokemon[]>;
   }
 }
