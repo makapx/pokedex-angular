@@ -9,12 +9,14 @@ import { HttpClientModule } from  '@angular/common/http';
 
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { ContainerComponent } from './components/container/container.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchbarComponent,
-    ContainerComponent
+    ContainerComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

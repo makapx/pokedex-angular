@@ -1,0 +1,138 @@
+.card {
+    margin-top: 4rem;
+}
+
+.card__content {
+    background-color: var(--white);
+    border-radius: 1rem;
+    border: var(--white) solid 2px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    width: 100%;
+    padding: 1rem;
+    position: relative;
+    transition: border 0.2s ease-in-out;
+}
+
+.card__content:hover {
+    cursor: pointer;
+    border: var(--gray) solid 2px;
+}
+
+.card__content:hover img {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
+.card__index {
+    color: var(--gray);
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.card__index,
+.card__pokemon-name {
+    text-align: center;
+}
+
+.card__pokemon-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.card__pokemon-name::first-letter,
+.card__pokemon-types > *::first-letter {
+    text-transform: uppercase;
+}
+
+.card__pokemon-types {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    color: #000;
+    font-size: 0.8rem;
+}
+
+.card__pokemon-types > * {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.card img {
+    position: absolute;
+    top: -3rem;
+    left: calc(50% - 45px);
+}
+
+.is-grass {
+    background-color: var(--grass);
+}
+
+.is-poison {
+    background-color: var(--poison);
+}
+
+.is-fire {
+    background-color: var(--fire);
+}
+
+.is-flying {
+    background-color: var(--flying);
+}
+
+.is-water {
+    background-color: var(--water);
+}
+
+.is-bug {
+    background-color: var(--bug);
+}
+
+.is-normal {
+    background-color: var(--normal);
+}
+
+.is-electric {
+    background-color: var(--electric);
+}
+
+.is-ground {
+    background-color: var(--ground);
+}
+
+.is-fairy {
+    background-color: var(--fairy);
+}
+
+.is-fighing {
+    background-color: var(--fighing);
+}
+
+.is-psychic {
+    background-color: var(--psychic);
+}
+
+.is-rock {
+    background-color: var(--rock);
+}
+
+.is-ice {
+    background-color: var(--ice);
+}
+
+.is-steel {
+    background-color: var(--steel);
+}
+
+.is-ghost {
+    background-color: var(--ghost);
+}
+
+.is-dark {
+    background-color: var(--dark);
+}
+
+.is-dragon {
+    background-color: var(--dragon)
+}
