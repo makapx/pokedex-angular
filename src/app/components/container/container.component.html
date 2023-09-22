@@ -1,3 +1,3 @@
-<div>
-    {{ pokemons | async | json}}
+<div class="container">
+    <app-card *ngFor="let pokemon of pokemons | async" [pokemon]="pokemon"></app-card>
 </div>

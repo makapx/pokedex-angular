@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card__content">
+        <img [src]="pokemon?.sprite" alt="pokemon?.name">
+        <p class="card__index">
+            N. {{ pokemon?.id }}
+        </p>
+        <p class="card__pokemon-name">
+            <strong>{{ pokemon?.name }}</strong>
+        </p>
+        <div class="card__pokemon-types">
+            <span class="is-{{type}}" *ngFor="let type of pokemon?.types">
+                {{ type }}
+            </span>
+        </div>
+    </div>
+</div>
