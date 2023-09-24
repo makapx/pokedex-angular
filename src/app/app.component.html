@@ -1,4 +1,4 @@
-<div class="main">
-    <app-searchbar></app-searchbar>
-    <app-container></app-container>
+<div class="main" >
+    <app-searchbar (searchedPokemonInfo)="onSearch($event)"></app-searchbar>
+    <app-container [pokemonsInfo]="pokemonsInfo"></app-container>
 </div>

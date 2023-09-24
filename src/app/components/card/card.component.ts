@@ -8,5 +8,5 @@ import Pokemon from '../../models/Pokemon';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-  @Input() pokemon: Pokemon|null = null;
+  @Input() pokemon: Pokemon | null = null;
 }
